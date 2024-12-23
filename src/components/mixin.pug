@@ -1,0 +1,30 @@
+mixin createMenu(menu, active)
+    each value, key in menu
+        if active == key
+            a.header-nav-wrapper__menu-link.header-nav-wrapper__menu-link_active(href= value)= key
+        else
+            a.header-nav-wrapper__menu-link(href= value)= key
+
+mixin createMenuEmerald(menu, active)
+    each value, key in menu
+        if active === key
+            a.header-nav-wrapper__menu-link.header-nav-wrapper__menu-link_active(href= value)= key
+        else
+            a.header-nav-wrapper__menu-link(href= value)= key
+            if key === 'Главная'
+                a.header-nav-wrapper__menu-link.header-nav-wrapper__menu-link_active(href= "#")= minerals[0].menuItem
+
+mixin createTable(data)
+    table
+        tr
+            th Название
+            th Агрегатное состояние
+            th Плотность (г/см³)
+            th Теплопроводность (Вт/(м·К))
+            th Электропроводность (См/м)
+            th Горючесть
+            th Страна добычи
+        each item in data
+            tr
+                each value, key in item
+                    td #{value}

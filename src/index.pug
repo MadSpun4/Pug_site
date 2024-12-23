@@ -1,0 +1,38 @@
+extends template
+
+block content
+  section.gallery
+    a(href= "emerald.html")
+      .gallery__item
+        img(src= require("./images/" + minerals[0].pict) alt="Изумруд")
+    .gallery__item
+      img(src= require("./images/gas.jpg") alt="Газ")
+    .gallery__item
+      img(src= require("./images/gold.jpg") alt="Золото")
+
+  section.logos
+    .logos__item
+      .logos__item_rounded
+        img(src= require("./images/" + minerals[3].pict) alt="Калий")
+      .logos__item-text= minerals[3].secondP
+    .logos__item
+      .logos__item_rounded
+        img(src= require("./images/" + minerals[2].pict) alt="Кобальт")
+      .logos__item-text= minerals[2].secondP
+    .logos__item
+      .logos__item_rounded
+        img(src= require("./images/" + minerals[4].pict) alt="Свинец")
+      .logos__item-text= minerals[4].secondP
+
+  section.content
+    .content__text-with-img
+      .content__text
+        .content__text.content__text_headline Алмаз
+        p= minerals[1].firstP
+      .content__text-with-img.content__text-with-img_box
+        img(src= require("./images/" + minerals[1].pict) alt="Картинка")
+
+    .content__text
+      .content__text.content__text_headline Кобальт
+      p= minerals[2].firstP
+

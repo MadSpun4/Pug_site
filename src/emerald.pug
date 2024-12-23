@@ -1,0 +1,14 @@
+extends template
+
+block header
+    .header-nav-wrapper
+        .header-nav-wrapper__header.header-nav-wrapper__header-title= minerals[0].menuItem
+        .header-nav-wrapper__menu
+            +createMenuEmerald(dictMenu, minerals[0].menuItem)
+block content
+    .content
+        .content__img-box
+            img(src= require("./images/" + minerals[0].pict))
+        .content__text
+            p= minerals[0].firstP
+            p= minerals[0].secondP

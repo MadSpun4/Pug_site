@@ -1,0 +1,22 @@
+include components/mixin.pug
+include components/data.pug
+
+doctype html
+html(lang="ru")
+head
+    title #{title}
+body
+    block header
+        .header-nav-wrapper
+            .header-nav-wrapper__header.header-nav-wrapper__header-title= title
+            .header-nav-wrapper__menu
+                +createMenu(dictMenu, 'Главная')
+
+    block nav
+
+    block content
+
+    block footer
+        .footer
+            .footer__info &copy; Поляков А.В., Б9122-09.03.04, 2024-2025
+            .footer__info ✉ Контакты

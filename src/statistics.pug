@@ -1,0 +1,121 @@
+extends template
+
+block header
+    .header-nav-wrapper
+        .header-nav-wrapper__header.header-nav-wrapper__header-title= 'Статистика ископаемых'
+        .header-nav-wrapper__menu
+            +createMenu(dictMenu, 'Статистика ископаемых')
+
+block content
+    .content
+        .content__form
+            form
+                details
+                    summary График
+                    table(cellspacing="5")
+                        tr
+                            th Значение по оси OX
+                            th Результат
+                        tr
+                            td
+                                input(type="radio" name="axe_OX")
+                                | Страна добычи
+                                br
+                                input(type="radio" name="axe_OX")
+                                | Агрегатное состояние
+                                br
+                            td
+                                input(type="checkbox" name="result")
+                                | Средняя плотность
+                                br
+                                input(type="checkbox" name="result")
+                                | Максимальная плотность
+                                br
+                                input(type="checkbox" name="result")
+                                | Минимальная плотность
+                                br
+                    input(type="submit" value="Построить")
+        .content__form
+            form
+                details
+                    summary Фильтр
+                    label(for="name") Название:
+                    input(type="text" id="name")
+                    br
+                    label(for="aggregation") Агрегатное состояние:
+                    select(id="aggregation")
+                        option(value="0" selected) Не выбрано
+                        option(value="1") Твердое
+                        option(value="2") Жидкое
+                        option(value="3") Газообразное
+                    br
+                    label(for="density") Плотность (г/см³):
+                    | От
+                    input(type="number" id="density")
+                    | до
+                    input(type="number" name="density")
+                    br
+                    label(for="thermal_conductivity") Теплопроводность (Вт/(м·К)):
+                    | От
+                    input(type="number" id="thermal_conductivity")
+                    | до
+                    input(type="number" name="thermal_conductivity")
+                    br
+                    label(for="electrical_conductivity") Электропроводность (См/м):
+                    | От
+                    input(type="number" id="electrical_conductivity")
+                    | до
+                    input(type="number" name="electrical_conductivity")
+                    br
+                    label(for="flammability") Горючесть:
+                    select(id="flammability")
+                        option(value="0" selected) Не выбрано
+                        option(value="1") Горючее
+                        option(value="2") Негорючее
+                    br
+                    label(for="country") Страна добычи:
+                    input(type="text" id="country")
+                    input(type="submit" id="seacrh" value="Найти")
+        .content__form
+            form
+                details
+                    summary Сортировка
+                    label(for="fst_level") Первый уровень:
+                    select(id="fst_level")
+                        option(value="0") Агрегатное состояние
+                        option(value="1") Плотность
+                        option(value="2") Теплопроводность
+                        option(value="3") Электропроводность
+                        option(value="4") Горючесть
+                        option(value="5") Страна
+                        option(value="6" selected) Нет
+                    | по убыванию?
+                    input(type="checkbox" name="fst_chek")
+                    br
+                    label(for="sec_level") Второй уровень:
+                    select(id="sec_level")
+                        option(value="0") Агрегатное состояние
+                        option(value="1") Плотность
+                        option(value="2") Теплопроводность
+                        option(value="3") Электропроводность
+                        option(value="4") Горючесть
+                        option(value="5") Страна
+                        option(value="6" selected) Нет
+                    | по убыванию?
+                    input(type="checkbox" name="sec_chek")
+                    br
+                    label(for="thd_level") Третий уровень:
+                    select(id="thd_level")
+                        option(value="0") Агрегатное состояние
+                        option(value="1") Плотность
+                        option(value="2") Теплопроводность
+                        option(value="3") Электропроводность
+                        option(value="4") Горючесть
+                        option(value="5") Страна
+                        option(value="6" selected) Нет
+                    | по убыванию?
+                    input(type="checkbox" name="thd_chek")
+                    br
+                    input(type="submit" name="sort" value="Сортировать")
+        .content__table
+            +createTable(mineralsData)
